@@ -1,6 +1,14 @@
 # Análise do Investimento Público em Educação (% do PIB)
 
-Projeto em Python para tratar, analisar estatisticamente e visualizar dados de investimento público em educação como percentual do Produto Interno Bruto (PIB), considerando o período de 2000 a 2021.
+Projeto em Python para tratar, analisar estatisticamente e visualizar dados de investimento público em educação como percentual do Produto Interno Bruto (PIB), por nível de ensino, no período de 2000 a 2021.
+
+## Fonte dos dados
+
+Os dados utilizados neste projeto foram obtidos no portal oficial do Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira (**Inep**), na página de [Indicadores Financeiros Educacionais](https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais/indicadores-financeiros-educacionais).
+
+A planilha utilizada no projeto é `Investimento_pib_direto.xlsx`, referente ao indicador **Percentual do investimento direto em relação ao Produto Interno Bruto (PIB), por nível de ensino — 2000 a 2021**.
+
+O Inep disponibiliza diferentes indicadores financeiros educacionais. Confira o título do arquivo baixado na página oficial e utilize a planilha correspondente ao indicador analisado neste projeto.
 
 ## Objetivos
 
@@ -18,23 +26,24 @@ Projeto em Python para tratar, analisar estatisticamente e visualizar dados de i
 - **Pandas** — leitura, limpeza e análise dos dados.
 - **Matplotlib** — criação dos gráficos.
 - **NumPy** — criação das posições das barras no gráfico comparativo.
-- **OpenPyXL** — mecanismo utilizado pelo Pandas para ler e gravar arquivos Excel (`.xlsx`).
+- **OpenPyXL** — leitura e gravação de arquivos Excel (`.xlsx`).
 
 ## Estrutura dos arquivos
 
-Coloque a planilha original e o script Python na mesma pasta. Ao executar o script, serão gerados os seguintes arquivos:
+Depois de clonar o repositório e colocar a planilha de entrada na pasta do projeto, a estrutura será semelhante a esta:
 
 ```text
 .
 ├── Investimento_pib_direto.xlsx
-├── seu_script.py
+├── analise_investimentos.py
+├── README.md
 ├── Investimento_limpo.xlsx
 ├── evolucao_investimentos.png
 ├── média_investimentos.png
 └── comparação_investimentos.png
 ```
 
-`seu_script.py` representa o nome do arquivo Python utilizado no projeto.
+Os arquivos de saída — planilha limpa e gráficos — são gerados quando o script é executado. `analise_investimentos.py` é um exemplo de nome para o script; substitua-o pelo nome real do arquivo, se for diferente.
 
 ## Categorias analisadas
 
@@ -74,7 +83,7 @@ O programa calcula, para cada categoria, a diferença entre o valor de 2021 e o 
 
 `((valor de 2021 - valor de 2000) / valor de 2000) * 100`
 
-Uma variação positiva indica aumento; uma variação negativa indica redução. Essa fórmula exige que o valor inicial de 2000 seja diferente de zero.
+Uma variação positiva indica aumento; uma variação negativa indica redução. A fórmula pressupõe que o valor inicial de 2000 seja diferente de zero.
 
 ### 4. Ano de maior investimento
 
@@ -84,7 +93,7 @@ Para cada categoria, o programa identifica o maior valor da série e informa o a
 
 ### `evolucao_investimentos.png`
 
-Gráfico de linhas que mostra a evolução anual do investimento público em cada categoria de ensino.
+Gráfico de linhas que mostra a evolução anual do investimento em cada categoria de ensino.
 
 ### `média_investimentos.png`
 
@@ -94,14 +103,24 @@ Gráfico de barras com a média do investimento de cada categoria durante o per�
 
 Gráfico de barras agrupadas que compara os valores de cada categoria nos anos de 2000 e 2021.
 
-Os gráficos são salvos com resolução de **300 DPI**, adequada para relatórios e apresentações. Eles são gravados no diretório de trabalho em que o script é executado.
+Os gráficos são salvos com resolução de **300 DPI**, adequada para relatórios e apresentações.
 
-## Requisitos
+## Como obter o projeto com Git
 
-- Python 3 instalado.
-- Planilha `Investimento_pib_direto.xlsx` disponível na pasta do projeto.
+No terminal, execute:
 
-Instale as bibliotecas necessárias pelo terminal:
+```bash
+git clone URL_DO_REPOSITORIO
+cd NOME_DO_REPOSITORIO
+```
+
+Substitua `URL_DO_REPOSITORIO` pela URL real do repositório no GitHub (ou em outro serviço Git) e `NOME_DO_REPOSITORIO` pelo nome da pasta criada pelo `git clone`.
+
+**Importante:** o `git clone` baixa os arquivos que foram enviados ao repositório. Se a planilha `Investimento_pib_direto.xlsx` não estiver incluída nele, será necessário baixá-la da [página oficial do Inep](https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais/indicadores-financeiros-educacionais) e colocá-la na pasta do projeto antes de executar o script.
+
+## Instalação das dependências
+
+É recomendado utilizar Python 3. Com o terminal aberto na pasta do projeto, execute:
 
 ```bash
 python -m pip install pandas matplotlib numpy openpyxl
@@ -109,21 +128,22 @@ python -m pip install pandas matplotlib numpy openpyxl
 
 ## Como executar
 
-1. Salve o código em um arquivo Python, por exemplo, `analise_investimentos.py`.
-2. Coloque `Investimento_pib_direto.xlsx` na mesma pasta.
-3. Abra o terminal nessa pasta.
-4. Instale as dependências, caso ainda não estejam instaladas.
-5. Execute:
+1. Clone o repositório com `git clone`.
+2. Entre na pasta do projeto com `cd`.
+3. Confira se a planilha `Investimento_pib_direto.xlsx` está na pasta do script.
+4. Instale as dependências.
+5. Execute o script, ajustando o nome do arquivo se necessário:
 
 ```bash
 python analise_investimentos.py
 ```
 
-Ao final, as estatísticas serão exibidas no terminal e os arquivos Excel e PNG serão criados na pasta de execução.
+As estatísticas serão exibidas no terminal. A planilha limpa e os três gráficos PNG serão gerados no diretório de trabalho.
 
 ## Observações
 
 - A planilha de entrada precisa ter as colunas na ordem esperada pelo script, pois os nomes são definidos manualmente.
-- A base deve conter registros para os anos de 2000 e 2021; caso contrário, a comparação não poderá ser realizada.
-- O gráfico de evolução utiliza todas as categorias, o que pode deixar a legenda extensa.
-- Os arquivos PNG são atualizados quando o script é executado novamente.
+- A base precisa conter registros para os anos de 2000 e 2021 para realizar a comparação.
+- O gráfico de evolução inclui todas as categorias, o que pode deixar a legenda extensa.
+- Os arquivos de saída são atualizados quando o script é executado novamente.
+- A fonte dos dados é o Inep; este projeto realiza uma análise programática da planilha e não representa, por si só, uma publicação oficial do Instituto.
