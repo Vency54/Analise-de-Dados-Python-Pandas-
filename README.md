@@ -36,11 +36,7 @@ Depois de clonar o repositório e colocar a planilha de entrada na pasta do proj
 .
 ├── Investimento_pib_direto.xlsx
 ├── analise_investimentos.py
-├── README.md
-├── Investimento_limpo.xlsx
-├── evolucao_investimentos.png
-├── média_investimentos.png
-└── comparação_investimentos.png
+└── README.md
 ```
 
 Os arquivos de saída — planilha limpa e gráficos — são gerados quando o script é executado. `analise_investimentos.py` é um exemplo de nome para o script; substitua-o pelo nome real do arquivo, se for diferente.
